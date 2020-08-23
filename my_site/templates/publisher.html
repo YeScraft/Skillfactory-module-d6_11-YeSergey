@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <a href="/">Домой</a>
+    <h1>Издательства:</h1>
+    {% for publisher in publishers %}
+        <ul class="list-group" >
+            <li class="list-group-item">
+                <h3>Издательство: {{ publisher.name }}, издано: <span class="badge badge-success badge-pill"> {{publisher.book_set.all|length}}</span></h3>
+                <ul class="list-group">
+                    {% for book in publisher.book_set.all %}
+                        <li class="list-group-item">
+                            <p>Автор: {{ book.author }}</p>
+                            <p>Книга: {{ book.title }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}
+
+

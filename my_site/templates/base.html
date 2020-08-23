@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="la">
+<head>
+  <meta charset="UTF-8">
+  <title>Modul D6</title>
+  {% load static %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href='{% static "css/style.css" %}'>
+  <link href="https://fonts.googleapis.com/css?family=Coming+Soon|Open+Sans:400,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+        <a href="/publisher/">Издательства</a>
+        <a href="/author/">Авторы</a>
+        <a href="/reading/">Сейчас читают</a>
+        <a href="/friend/">Друзья</a>
+    </nav>
+  </header>
+    <section class="block1">
+        <div>
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </section>
+  <footer>
+    <div class="footerwrapper">
+      <p class="footerp">&copy; Copyright @YeSergey 2020, All rights reserved.</p>
+      <div class="footerIMG">
+        <a href=""><img src='{% static "img/Twitter.png" %}' alt="Лого"></a>
+        <a href=""><img src='{% static "img/LinkedIn.png" %}' alt="Лого"></a>
+        <a href=""><img src='{% static "img/Google.png" %}' alt="Лого"></a>
+        <a href=""><img src='{% static "img/Facebook.png" %}' alt="Лого"></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

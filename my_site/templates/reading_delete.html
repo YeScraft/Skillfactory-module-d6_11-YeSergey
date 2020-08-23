@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if reading.id %}
+        <h2>Удалить сессию?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить">
+        </form>
+    {% else %}
+        <h2>Удалить {{ friend.name }}?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить">
+        </form>
+    {% endif %}
+{% endblock %}
+

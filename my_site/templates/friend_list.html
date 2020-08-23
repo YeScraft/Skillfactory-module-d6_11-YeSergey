@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/">Домой</a>
+    <h2>Друзья:</h2>
+    <ul>
+        {% for friend in object_list %}
+            <li>
+                <a href="{{friend.id}}/">{{ friend.id }}: Друг {{ friend.name }} читает:</a>
+                <ul>
+                    {% for book in friend.books.all %}
+                        <li>
+                            <p>Книга: {{ book.title }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/friend/create/">Добавить</a>
+{% endblock %}
+
+

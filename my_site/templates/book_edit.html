@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--enctype="multipart/form-data" для сохранения картинок-->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить">
+    </form>
+    {% if author.id %}
+        <a href="/author/{{ book.id }}/delete">Удалить книгу</a>
+    {% else %}
+        <a href="/author/{{ book.id }}/delete" hidden>Удалить книгу</a>
+    {% endif %}
+{% endblock %}

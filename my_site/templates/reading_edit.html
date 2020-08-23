@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить">
+    </form>
+    {% if reading.id %}
+        <a href="/reading/{{ reading.id }}/delete">Удалить</a>
+    {% else %}
+        {% if friend.id %}
+            <a href="/friend/{{ friend.id }}/delete">Удалить</a>
+        {% endif %}
+        <a href="/reading/{{ reading.id }}/delete" hidden>Удалить</a>
+    {% endif %}
+{% endblock %}
+
+

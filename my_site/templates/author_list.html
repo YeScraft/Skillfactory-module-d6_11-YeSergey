@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/">Домой</a>
+    <ul>
+        {% for author in object_list %}
+            <li><a href="{{author.id}}/">{{ author.id }}: {{ author.full_name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/author/create/">Создать нового автора</a>
+    <a href="/author/create_many/">Создать несколько авторов</a>
+{% endblock %}
+
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p>Добро пожаловать в мою библиотеку.</p>
+    <p>Тут собрано {{ books|length }} книг из моей личной коллекции.</p>
+    <table border="1">
+        {% for book in books %}
+        <tr>
+            <td style="padding-right:5; padding-left:5">{{ forloop.counter }}</td>
+            <td><a href="{{ book.id }}/">{{ book.title }}</a></td>
+            <td>
+                {% if book.cover %}
+                    <img height="100" width="100" src="{{ book.cover.url }}" alt="Book_cover">
+                {% else %}
+                    <p>Обложка</p>
+                {% endif %}
+            </td>
+            <td>{{ book.ISBN }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.year_release }}</td>
+            <td>{{ book.author.full_name }}</td>
+            <td>{{ book.author.country }}</td>
+            <td style="padding-right:5; padding-left:5">{{ book.copy_count }}</td>
+            <td>
+                <ul style="padding-right:20; padding-left:0; list-style-type: none">
+                    <p style="position: relative, margine:0">Читают:</p>
+                    {% for friend in book.readers.all %}
+                        <li>
+                            <p>{{ friend.name }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <form action="/index/book_increment/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ book.id }}"/>
+                <input type="submit" value="Увеличить количество"/>
+            </form>
+            <form action="/index/book_decrement/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ book.id }}"/>
+                <input type="submit" value="Уменьшить количество"/>
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
